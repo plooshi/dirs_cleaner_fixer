@@ -495,7 +495,7 @@ if [ ! -f blobs/"$deviceid"-"$version".der ]; then
         remote_cmd "cp /mnt1/usr/libexec/dirs_cleaner /mnt1/usr/libexec/dirs_cleaner"
     else
         snapshot="com.apple.os.update-$active"
-        while [ "$(remote_cmd \"[ -s /mnt4/usr/libexec/dirs_cleaner ]; echo $?\")" = "1" ]; do
+        while [ "$(remote_cmd "[ -s /mnt4/usr/libexec/dirs_cleaner ]; echo \$?")" = "1" ]; do
             remote_cmd "umount /mnt4"
             remote_cmd "snaputil -s $snapshot /mnt1 /mnt4"
         done
