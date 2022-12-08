@@ -492,7 +492,7 @@ if [ ! -f blobs/"$deviceid"-"$version".der ]; then
 
     if [ "$semi_tethered" = "1" ]; then
         remote_cmd "/sbin/mount_apfs /dev/$fs /mnt8"
-        remote_cmd "cp /mnt1/usr/libexec/dirs_cleaner /mnt1/usr/libexec/dirs_cleaner"
+        remote_cmd "cp /mnt1/usr/libexec/dirs_cleaner /mnt8/usr/libexec/dirs_cleaner"
     else
         snapshot="com.apple.os.update-$active"
         remote_cmd "snaputil -s $snapshot /mnt1 /mnt4"
