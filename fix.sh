@@ -504,9 +504,11 @@ if [ ! -f blobs/"$deviceid"-"$version".der ]; then
     if [ -z "$semi_tethered" ]; then
         echo "Your device will reboot into recovery mode, re-run palera1n and your device should boot"
     fi
-    remote_cmd "/sbin/reboot"
+    remote_cmd "/sbin/reboot" || true
     sleep 1
     _kill_if_running iproxy
+    
+    sleep 2
 fi
 
 cd logs
