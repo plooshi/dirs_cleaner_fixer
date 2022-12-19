@@ -457,7 +457,7 @@ if [ ! -f blobs/"$deviceid"-"$version".der ]; then
         sleep 1
     done
 
-    remote_cmd "/usr/bin/mount_filesystems"
+    remote_cmd "/usr/bin/mount_filesystems_nouser"
 
     echo "[*] Testing for baseband presence"
     if [ "$(remote_cmd "/usr/bin/mgask HasBaseband | grep -E 'true|false'")" = "true" ] && [ "${cpid}" == *"0x700"* ]; then
