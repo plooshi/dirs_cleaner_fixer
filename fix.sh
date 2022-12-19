@@ -28,10 +28,10 @@ touch logs/${log}.log
 # Functions
 # =========
 remote_cmd() {
-    "$dir"/sshpass -p 'alpine' ssh -o StrictHostKeyChecking=no -p2222 root@localhost "$@"
+    "$dir"/sshpass -p 'alpine' ssh -o StrictHostKeyChecking=no -p7331 root@localhost "$@"
 }
 remote_cp() {
-    "$dir"/sshpass -p 'alpine' scp -o StrictHostKeyChecking=no -P2222 $@
+    "$dir"/sshpass -p 'alpine' scp -o StrictHostKeyChecking=no -P7331 $@
 }
 
 step() {
@@ -448,9 +448,9 @@ if [ ! -f blobs/"$deviceid"-"$version".der ]; then
     # Execute the commands once the rd is booted
     _kill_if_running iproxy
     if [ "$os" = 'Linux' ]; then
-        sudo "$dir"/iproxy 2222 22 &
+        sudo "$dir"/iproxy 7331 22 &
     else
-        "$dir"/iproxy 2222 22 &
+        "$dir"/iproxy 7331 22 &
     fi
 
     while ! (remote_cmd "echo connected" &> /dev/null); do
